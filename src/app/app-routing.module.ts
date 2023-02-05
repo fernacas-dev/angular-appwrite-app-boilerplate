@@ -22,12 +22,12 @@ const routes: Routes = [
     path: 'client',
     loadChildren: () => import('./client/client.module').then(m => m.ClientModule),
     canActivate: [UserLoggedGuardGuard],
-    data: { preload: false },
+    data: { preload: true },
   },
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    data: { preload: false },
+    data: { preload: true },
     canActivate: [UserLoggedGuardGuard],
   },
 ];
