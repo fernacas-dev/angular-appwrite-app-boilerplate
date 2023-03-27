@@ -38,8 +38,6 @@ export class BusinessComponent extends CrudComponent{
 
     const category = this.categories?.filter(x => x.$id === item.categoryId);
     if(category.length > 0){
-      console.log(`category: ${JSON.stringify(category)}`);
-
       return {
         $id: item.$id,
         userOwnerId: item.userOwnerId,

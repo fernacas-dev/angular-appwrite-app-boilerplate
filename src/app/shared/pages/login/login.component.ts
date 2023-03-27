@@ -11,18 +11,31 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup<any> | any;
+  error: Error = {
+    name: '',
+    message: '',
+  };
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.buildForm();
-   }
+  }
 
   ngOnInit(): void {
     this.authService.user$.subscribe((user) => {
       if(user !== null){
-        console.log(user);
         this.router.navigate(['/client']);
       }
-    })
+    }, error => {
+      this.error = error;
+    });
+
+    this.authService.error$.subscribe((error) => {
+      this.error = error;
+    });
   }
 
   private buildForm(){
@@ -33,6 +46,11 @@ export class LoginComponent implements OnInit {
   }
 
   save(event: Event) {
+    this.error = {
+      name: '',
+      message: '',
+    };
+
     if(this.loginForm?.valid){
       this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
     }else{
@@ -40,4 +58,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  goRegister() {
+    this.router.navigate(['/register']);
+  }
 }

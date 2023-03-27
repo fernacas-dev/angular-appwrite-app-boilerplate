@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ID} from 'appwrite';
-import { BehaviorSubject, concatMap, filter, from, mergeMap, Subject } from 'rxjs';
+import { BehaviorSubject, from, mergeMap, Subject } from 'rxjs';
 import { UserDto } from '../models/user.model';
 import { AppwriteApi } from './appwrite';
 
@@ -15,6 +15,10 @@ export class UserService {
 
   readonly logged$ = this.logged.asObservable();
 
+  private error = new Subject<any | null>();
+
+  readonly error$ = this.error.asObservable();
+
   private _list = new BehaviorSubject<any | null>(
     null
   );
@@ -27,8 +31,11 @@ export class UserService {
 
     return from(registerResponse).pipe(
       mergeMap(() => this.appwriteAPI.account.updateName(userDto.name)),
-      concatMap(() => this.appwriteAPI.account.get()),
-    ).subscribe((user: any) => this.logged.next(user));
+      //concatMap(() => this.appwriteAPI.account.get()),
+    ).subscribe(
+      (user: any) => this.logged.next(user),
+      error => this.error.next(error)
+    );
   }
 
 }

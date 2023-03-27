@@ -1,6 +1,5 @@
-import { Component, ComponentFactoryResolver, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-;
 
 @Component({
   selector: 'app-add-form',
@@ -12,7 +11,10 @@ export class AddFormComponent implements OnInit {
   form: FormGroup<any> | any;
   formBuilder?: FormBuilder;
 
-  constructor(@Inject('formBuilder') formBuilder: FormBuilder, @Inject('genericService') private service: any) {
+  constructor(
+    @Inject('formBuilder') formBuilder: FormBuilder,
+    @Inject('genericService') private service: any,
+  ) {
     this.formBuilder = formBuilder;
     this.buildForm();
   }
@@ -28,9 +30,9 @@ export class AddFormComponent implements OnInit {
 
   save(event: Event) {
     if(this.form?.valid){
-      console.log(this.form.value);
       this.service.add(this.form.value);
-    }else{
+      this.form?.reset();
+    } else {
       this.form?.markAllAsTouched();
     }
   }
@@ -38,6 +40,5 @@ export class AddFormComponent implements OnInit {
   mapForm(item: any){
     return {name: item.name};
   }
-
 }
 

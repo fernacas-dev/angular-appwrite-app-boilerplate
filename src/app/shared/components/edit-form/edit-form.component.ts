@@ -13,7 +13,10 @@ export class EditFormComponent implements OnInit {
 
   @Input('data') data: any | undefined;
 
-  constructor(@Inject('formBuilder') protected formBuilder: FormBuilder, @Inject('genericService') private service: any) {
+  constructor(
+    @Inject('formBuilder') protected formBuilder: FormBuilder,
+    @Inject('genericService') private service: any
+  ) {
     this.buildForm();
   }
 
@@ -31,21 +34,18 @@ export class EditFormComponent implements OnInit {
 
   save(event: Event) {
     if(this.form?.valid){
-      console.log(this.form.value);
       this.service.edit(this.mapForm(this.form.value));
-    }else{
-      console.log(`error: ${JSON.stringify(this.form.value)}`);
+      this.form?.reset();
+    } else {
       this.form?.markAllAsTouched();
     }
   }
 
   cancel() {
-    console.log('closingForm')
     this.closingForm.emit(true);
   }
 
   mapForm(item: any): any{
-    console.log(`mapForm padre`)
     return {name: item.name, $id: this.data?.$id};
   }
 }

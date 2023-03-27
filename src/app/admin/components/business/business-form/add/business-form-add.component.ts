@@ -14,6 +14,7 @@ export class BusinessFormAddComponent extends AddFormComponent {
   @Input() formTitle: string = '';
   @Input() categories: Category[] = [];
 
+
   constructor(formBuilder: FormBuilder, businessService: BusinessService){
     super(formBuilder, businessService);
   }

@@ -1,0 +1,46 @@
+label {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+button {
+  margin: 5px 0;
+  padding: 10px 40px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card {
+  width: 100%;
+  margin-top: 20%
+}
+
+.card-header {
+  border-bottom: 2px black solid;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.login-form {
+  margin: 0 10px;
+}
+
+.errorText {
+  color: brown;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.login-link {
+  margin-top: 50px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.link-container {
+  padding: 10px 0;
+}

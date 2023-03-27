@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { filter } from 'rxjs';
 
 @Component({
@@ -6,7 +6,7 @@ import { filter } from 'rxjs';
   template: '',
   styleUrls: []
 })
-export class CrudComponent /*implements OnInit*/ {
+export class CrudComponent {
 
   protected service: any
 
@@ -14,6 +14,7 @@ export class CrudComponent /*implements OnInit*/ {
   dataTable: any[] = [];
   isEditing: boolean = false;
   dataItem: any | undefined;
+  isVisibleForm: boolean = false;
 
   constructor(@Inject('genericService') genericService: any) {
     this.service = inject(genericService);
@@ -35,10 +36,10 @@ export class CrudComponent /*implements OnInit*/ {
     this.service.delete(itemId);
   }
 
-  editItemId(itemId: string){
+  editItemId(itemId: string): void {
     this.isEditing = true;
+    this.isVisibleForm = true;
     this.dataItem = this.dataTable.find(item => item.$id === itemId);
-    console.log(`dataItem: ${JSON.stringify(this.dataItem)}`)
   }
 
   closeEditForm(event: Event) {
@@ -80,5 +81,14 @@ export class CrudComponent /*implements OnInit*/ {
       const tmp = this.dataTable.filter(item => item.$id !== itemId);
       this.dataTable = tmp;
     })
+  }
+
+  addItem(){
+    this.isEditing = false;
+    this.isVisibleForm = true;
+  }
+
+  hideForm(){
+    this.isVisibleForm = false;
   }
 }

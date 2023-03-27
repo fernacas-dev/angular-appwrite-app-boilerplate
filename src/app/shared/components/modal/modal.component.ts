@@ -1,51 +1,54 @@
-import { AfterViewInit, Component, ComponentRef, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { DynamicComponentDirective } from '../../directives/dynamic-component.directive';
-import { LoginComponent } from '../../pages/login/login.component';
-import { ModalService } from '../../services/modal.service';
+import { ComponentWrapper } from './../../../admin/models/component-wrapper.model';
+import { Component, Input, ViewChild, ViewContainerRef, AfterViewInit, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent implements OnInit, AfterViewInit {
+export class ModalComponent implements OnChanges {
 
-  @ViewChild(LoginComponent) dynamic!: LoginComponent;
+  @Input() componentChild: ComponentWrapper =
+  {
+    component: null,
+    attributes: [],
+  };
+
+  _isActive: boolean = false;
+
+  @Input('isActive') set isActive(value: boolean){
+    this._isActive = value;
+  };
+
+  @ViewChild('container', { read: ViewContainerRef })
+  container!: ViewContainerRef;
+
+  @Output() closeEvent = new EventEmitter<boolean>();
 
   modalTitle: string = '';
-  isActive = false;
 
-  constructor(private modalService: ModalService) { }
+  isClosing(): void {
+    this.closeEvent.emit(true);
+    this.container.clear();
+  }
 
-  ngAfterViewInit(): void {
+  async createComponentsBasedOnConfig() {
+      this.container?.clear();
 
-    console.log('Values on ngAfterViewInit():');
-    console.log("title:", this.dynamic);
-
-    this.modalService._openModal$.subscribe((component: any) => {
-      console.log('aqui')
-      if(component === null){
-        this.isActive = false;
-        return
+      if(this.container && this.componentChild.component !== null){
+        const componentInstance = await this.componentChild.component;
+        const componentRef = this.container.createComponent(componentInstance);
+        this.componentChild.attributes.forEach(attribute => {
+          componentRef.setInput(attribute.key, attribute.value);
+          if(attribute.key === 'formTitle'){
+            this.modalTitle = attribute.value;
+          }
+        });
       }
-
-      this.isActive = true;
-    });
   }
 
-  generateComponent(component: any):void{
-
-
-
+  ngOnChanges(changes: SimpleChanges): void {
+    this.createComponentsBasedOnConfig();
   }
-
-  ngOnInit(): void {
-
-  }
-
-  closeModal(): void {
-    this.modalService.closeModal();
-  }
-
 
 }

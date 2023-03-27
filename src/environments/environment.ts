@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   endpoint: 'https://srv53119-206152.vps.etecsa.cu/v1',
-  projectId: 'comercializadora',
-  databaseId: 'comercializadoraDB',
+  projectId: 'menu-app',
+  databaseId: 'menuAppDB',
   chatCollectionId: 'messages',
 };
 

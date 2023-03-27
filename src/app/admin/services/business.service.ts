@@ -10,4 +10,5 @@ export class BusinessService extends CrudService {
     this.setConnection('menuAppDB', 'business');
   }
 
+
 }

@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent,
-  },
+  }, 
   {
     path: 'register',
     component: RegisterComponent,

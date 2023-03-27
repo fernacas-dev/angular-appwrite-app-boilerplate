@@ -5,9 +5,9 @@ import { CrudService } from '../../shared/services/crud.service';
  providedIn: 'root',
 })
 export class CategoriesService extends CrudService {
+
   constructor(){
     super();
     this.setConnection('menuAppDB', 'categories');
   }
-
 }

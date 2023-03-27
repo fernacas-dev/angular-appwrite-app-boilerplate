@@ -1,0 +1,53 @@
+
+<div class="row mt-5 mb-4" *ngIf="isVisibleForm">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        Categories
+        <span class="float-end" (click)="hideForm()">X</span>
+      </div>
+      <div class="card-body">
+        <app-categories-form-add *ngIf="!isEditing" formTitle="Add Category"></app-categories-form-add>
+        <app-categories-form-edit
+          *ngIf="isEditing"
+          (closingForm)="closeEditForm($event)"
+          [data]="dataItem"
+          formTitle="Edit Category"
+        ></app-categories-form-edit>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-8">
+    <div class="row">
+      <div class="col-12">
+        <button class="btn btn-success float-end" *ngIf="!isVisibleForm" (click)="addItem()">Add</button>
+      </div>
+      <div class="col-12">
+        <app-table
+        [headTable]="headTable"
+        [dataTable]="dataTable"
+        (editItemId)="editItemId($event)"
+        (deleteItemId)="deleteItemId($event)"
+      ></app-table>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+  </div>
+</div>
+
+
+
+<!--
+<app-modal
+  [isActive]="isActive"
+  [componentChild]="componentChild"
+  (closeEvent)="isModalClosing()">
+</app-modal>
+-->
+

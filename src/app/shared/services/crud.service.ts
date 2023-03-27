@@ -85,7 +85,6 @@ export class CrudService implements ICrudService{
  }
 }
 
-
 interface ICrudService {
   dbId: string,
   tableId: string,
@@ -94,5 +93,4 @@ interface ICrudService {
   add(item: any): Subscription;
   edit(item: any): Subscription;
   delete(itemId: string): Subscription;
-
 }

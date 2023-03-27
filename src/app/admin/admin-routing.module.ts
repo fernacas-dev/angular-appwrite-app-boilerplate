@@ -1,3 +1,4 @@
+import { CategoriesComponent } from './components/categories/categories.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BusinessComponent } from './components/business/business.component';
@@ -11,6 +12,14 @@ const routes: Routes = [
       {
         path: 'business',
         component: BusinessComponent,
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+      },
+      {
+        path: '**',
+        redirectTo: 'business'
       },
     ]
   }

@@ -17,15 +17,23 @@ export class AuthService {
  );
  readonly user$ = this._user.asObservable();
 
+ private _error = new BehaviorSubject<any | null>(
+  null
+ );
+ readonly error$ = this._error.asObservable();
+
  constructor(private router: Router) {}
 
  login(email: string, password: string) {
-  const authReq = this.appwriteAPI.account.createEmailSession(email, password);
-   return from(authReq).pipe(
-     concatMap(() => this.appwriteAPI.account.get()),
-   ).subscribe(user => {
-      this._user.next(user)
-   });
+  const authReq = this.appwriteAPI.account.createEmailSession(email, password)
+
+  return from(authReq).pipe(
+      concatMap(() => this.appwriteAPI.account.get()),
+    ).subscribe(user => {
+       this._user.next(user)
+    },error => {
+      this._error.next(error);
+    });
  }
 
  async isLoggedIn() {

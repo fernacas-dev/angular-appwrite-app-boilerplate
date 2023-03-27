@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +11,6 @@ import { AddFormComponent } from './components/add-form/add-form.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -26,6 +25,7 @@ import { BrowserModule } from '@angular/platform-browser';
     EditFormComponent,
   ],
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     FormsModule,
   ],
@@ -37,6 +37,7 @@ import { BrowserModule } from '@angular/platform-browser';
     AddFormComponent,
     EditFormComponent,
     ReactiveFormsModule,
+    CommonModule,
   ],
   providers: [
   ]
