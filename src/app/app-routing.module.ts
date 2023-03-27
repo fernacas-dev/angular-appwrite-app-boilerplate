@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent,
-  }, 
+  },
   {
     path: 'register',
     component: RegisterComponent,
@@ -29,6 +29,10 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
     data: { preload: true },
     canActivate: [UserLoggedGuardGuard],
+  },
+  {
+    path: '**',
+    component: LoginComponent,
   },
 ];
 
