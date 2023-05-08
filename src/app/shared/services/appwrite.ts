@@ -3,6 +3,7 @@ import {
   Account,
   Client as Appwrite,
   Databases,
+  Functions,
 } from 'appwrite';
 import { environment } from 'src/environments/environment';
 
@@ -32,6 +33,7 @@ export const AppwriteEnvironment = new InjectionToken<AppwriteConfig>(
 export const AppwriteApi = new InjectionToken<{
     database: Databases;
     account: Account;
+    functions: Functions;
   }>('Appwrite SDK', {
     providedIn: 'root',
     factory() {
@@ -42,7 +44,8 @@ export const AppwriteApi = new InjectionToken<{
 
       const database = new Databases(appwrite);
       const account = new Account(appwrite);
+      const functions = new Functions(appwrite);
 
-      return { database, account };
+      return { database, account, functions };
     },
   });

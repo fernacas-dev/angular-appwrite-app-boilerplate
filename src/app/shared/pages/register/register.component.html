@@ -1,44 +1,51 @@
 <div class="row">
-  <div class="col-md-4 col-sm-12"></div>
-  <div class="col-md-4 col-sm-12">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="card-title">Register</h5>
-      </div>
-      <div class="card-body">
-        <div *ngIf="error" class="text-center errorText">{{error.message}}</div>
-        <div class="card-body">
-          <form [formGroup]="registerForm" (ngSubmit)="save($event)" class="login-form">
-            <div class="mb-3">
-              <label for="formName" class="form-label">Name</label>
-              <input class="form-control form-control-lg" id="formName" matInput placeholder="johndoe" type="text" formControlName="name">
-            </div>
-            <div class="mb-3">
-              <label for="formEmail" class="form-label">Email</label>
-              <input class="form-control form-control-lg" id="formEmail" matInput placeholder="johndoe@gmail.com" type="email" formControlName="email">
-            </div>
-            <div class="mb-3">
-              <label for="formPassword" class="form-label">Password</label>
-              <input class="form-control form-control-lg" id="formPassword" matInput type="password" formControlName="password">
-            </div>
-            <div class="mb-3">
-              <label for="formConfirmPassword" class="form-label">Confirm Password</label>
-              <input class="form-control form-control-lg" id="formConfirmPassword" matInput type="password" formControlName="confirmPassword">
-            </div>
-            <div class="row">
-              <div class="col-6">
-                <div class="link-container">
-                  <a class="login-link" (click)="goLogin()">Log In</a>
-                </div>
-              </div>
-              <div class="col-6">
-                <button type="submit" class="btn btn-primary float-end">Register</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+  <div class="col-md-6 d-none d-md-block d-sm-none" style="background-color: #DEE5E5; height: 750px;">
+    <img src="assets/img/login-cover.jpeg" width="100%" height="100%">
   </div>
-  <div class="col-md-4 col-sm-12"></div>
+  <div class="col-md-6" style="background-color: #DEE5E5;">
+      <div class="row">
+        <div class="col-md-2 col-sm-12"></div>
+        <div class="col-md-8 col-sm-12">
+          <div class="register-card">
+            <div class="register-card-header">
+              <h5 class="register-card-title">Register</h5>
+            </div>
+            <div class="register-card-body">
+              <div *ngIf="error" class="text-center errorText">{{error.message}}</div>
+              <div class="register-card-body">
+                <form [formGroup]="registerForm" (ngSubmit)="save($event)" class="login-form">
+                  <div class="mb-3">
+                    <label for="formName" class="form-label">Name</label>
+                    <input class="form-control form-control-lg" id="formName" matInput placeholder="johndoe" type="text" formControlName="name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="formEmail" class="form-label">Email</label>
+                    <input class="form-control form-control-lg" id="formEmail" matInput placeholder="johndoe@gmail.com" type="email" formControlName="email">
+                  </div>
+                  <div class="mb-3">
+                    <label for="formPassword" class="form-label">Password</label>
+                    <input class="form-control form-control-lg" id="formPassword" matInput type="password" formControlName="password">
+                  </div>
+                  <div class="mb-3">
+                    <label for="formConfirmPassword" class="form-label">Confirm Password</label>
+                    <input class="form-control form-control-lg" id="formConfirmPassword" matInput type="password" formControlName="confirmPassword">
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="link-container">
+                        <a class="login-link" (click)="goLogin()">Log In</a>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <button type="submit" class="btn btn-primary btn-register float-end">Register</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-12"></div>
+      </div>
+  </div>
 </div>

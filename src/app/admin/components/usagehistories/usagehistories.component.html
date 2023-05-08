@@ -1,0 +1,45 @@
+
+<div class="row mt-5 mb-4" *ngIf="isVisibleForm">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        Usage History
+        <span class="float-end" (click)="hideForm()">X</span>
+      </div>
+      <div class="card-body">
+        <app-usagehistories-form-add
+          *ngIf="!isEditing"
+          formTitle="Add Usage Hitory"
+        ></app-usagehistories-form-add>
+        <app-usagehistories-form-edit
+          *ngIf="isEditing"
+          (closingForm)="closeEditForm($event)"
+          [data]="dataItem"
+          formTitle="Edit Usage Hitory"
+        ></app-usagehistories-form-edit>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-8">
+    <div class="row">
+      <div class="col-12">
+        <button class="btn btn-success float-end" *ngIf="!isVisibleForm" (click)="addItem()">Add</button>
+      </div>
+      <div class="col-12">
+        <app-table
+        [headTable]="headTable"
+        [dataTable]="dataTable"
+        (editItemId)="editItemId($event)"
+        (deleteItemId)="deleteItemId($event)"
+      ></app-table>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+  </div>
+</div>

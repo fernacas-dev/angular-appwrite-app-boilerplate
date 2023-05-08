@@ -11,16 +11,17 @@ button {
   font-weight: 600;
 }
 
-.card {
+.login-card {
   width: 100%;
-  margin-top: 20%
+  margin-top: 20%;
+  margin-left: 0.35%;
 }
 
-.card-header {
-  border-bottom: 2px black solid;
+.login-card-header {
+  /*border-bottom: 2px black solid;*/
 }
 
-.card-title {
+.login-card-title {
   text-align: center;
   font-size: 24px;
   font-weight: 600;

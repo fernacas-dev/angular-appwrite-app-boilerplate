@@ -5,3 +5,110 @@
   background: -webkit-linear-gradient(to right, #243B55, #141E30);
   background: linear-gradient(to right, #243B55, #141E30);
 */
+
+
+.btn-login {
+  background-color: #17B890;
+}
+
+.btn-login:hover {
+  background-color: #082D0F;
+}
+
+.btn-register {
+  background-color: #17B890;
+}
+
+.btn-register:hover {
+  background-color: #082D0F;
+}
+
+.link-container a {
+  color: #17B890;
+}
+
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #082D0F;
+  color: white;
+  text-align: center;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(1px);
+}
+
+
+body {
+  background-color: #9DC5BB;
+}
+
+.bg-card {
+  background-color: #DEE5E5;
+}
+
+.bg-navbar {
+  background-color: #17B890;
+}
+
+.bg-footer {
+  background-color: #082D0F;
+}
+
+.btn-primary {
+  background-color: #9DC5BB;
+  border-color: #082D0F;
+  color: #082D0F;
+}
+
+.btn-primary:hover {
+  background-color: #082D0F;
+  border-color: #9DC5BB;
+  color: #9DC5BB;
+}
+
+.btn-primary:active {
+  background-color: #082D0F;
+  border-color: #9DC5BB;
+  color: #9DC5BB;
+}
+
+.btn-danger {
+  background-color: #9DC5BB;
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #dc3545;
+  border-color: #9DC5BB;
+  color: #9DC5BB;
+}
+
+
+.btn-danger:active {
+  background-color: #dc3545;
+  border-color: #9DC5BB;
+  color: #9DC5BB;
+}
+
+
+/*
+palette
+DEE5E5
+9DC5BB
+17B890
+5E807F
+082D0F
+
+*/

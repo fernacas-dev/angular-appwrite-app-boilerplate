@@ -1,0 +1,19 @@
+<div class="card bg-card" style="width: 22rem;">
+  <!--<img src="..." class="card-img-top" alt="...">-->
+  <div class="card-header">
+    <h5 class="card-title">{{wpInstance?.Name}}</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      Image: {{wpInstance?.Image}} <br>
+      Ports: {{wpInstance?.Ports![0].PublicPort}}:{{wpInstance?.Ports![0].PrivatePort}} <br>
+      Status: {{wpInstance?.Status}} <br>
+      State: {{wpInstance?.State}} <br>
+    </p>
+    <div class="card-footer d-flex flex-row-reverse">
+      <button class="btn btn-danger mx-1" (click)="deleteWpInstance(wpInstance?.Name!)">Remove</button>
+      <button class="btn btn-primary mx-1" [routerLink]="['details/'+wpInstance?.Name]">Details</button>
+      <a class="btn btn-primary mx-1" target="_blank" rel="noopener noreferrer" href="http://srv53119-206152.vps.etecsa.cu:{{wpInstance?.Ports![0].PublicPort}}">Go</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="save($event)">
+  <div class="mb-3">
+    <label for="formName" class="form-label">Name</label>
+    <input class="form-control" id="formName" matInput placeholder="Bar" type="text" formControlName="name">
+  </div>
+  <div class="mb-3">
+    <label for="formAddress" class="form-label">IP Address</label>
+    <input class="form-control" id="formAddress" matInput placeholder="127.0.0.1" type="text" formControlName="address">
+  </div>
+  <div class="mb-3">
+    <label for="formStatus" class="form-label">Status</label>
+    <input class="form-control" id="formStatus" matInput placeholder="Created" type="text" formControlName="status">
+  </div>
+  <button class="btn btn-primary float-end">Add</button>
+</form>

@@ -1,0 +1,51 @@
+{
+  "projectId": "wphosting",
+  "projectName": "WPHosting",
+  "functions": [
+    {
+      "$id": "6451928217427bc83c0f",
+      "name": "CreateWPInstance",
+      "runtime": "node-16.0",
+      "path": "functions/CreateWPInstance",
+      "entrypoint": "src/index.js",
+      "ignore": [".npm"],
+      "execute": ["users"],
+      "events": [],
+      "schedule": "",
+      "timeout": 15
+    }, {
+      "$id": "6451bdaa4a123d5e4b5d",
+      "name": "DescribeEnqueuedWPInstances",
+      "runtime": "node-16.0",
+      "path": "functions/DescribeEnqueuedWPInstances",
+      "entrypoint": "src/index.js",
+      "ignore": [".npm"],
+      "execute": [],
+      "events": ["databases.wphostingdb.collections.instancesCreatedQueue.documents.*.create"],
+      "schedule": "* * * * *",
+      "timeout": 30
+    }, {
+      "$id": "6455d26dd91116ecd2e2",
+      "name": "RemoveWPInstance",
+      "runtime": "node-16.0",
+      "path": "functions/RemoveWPInstance",
+      "entrypoint": "src/index.js",
+      "ignore": [".npm"],
+      "execute": ["users"],
+      "events": [],
+      "schedule": "",
+      "timeout": 15
+    }, {
+      "$id": "6456fa8ea9fdd247d0d0",
+      "name": "RefreshWPInstances",
+      "runtime": "node-16.0",
+      "path": "functions/RefreshWPInstances",
+      "entrypoint": "src/index.js",
+      "ignore": [".npm"],
+      "execute": [],
+      "events": [],
+      "schedule": "",
+      "timeout": 15
+    }
+  ]
+}

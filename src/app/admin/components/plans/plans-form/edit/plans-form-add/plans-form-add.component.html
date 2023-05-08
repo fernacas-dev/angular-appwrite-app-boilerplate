@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="save($event)">
+  <div class="mb-3">
+    <label for="formName" class="form-label">Name</label>
+    <input class="form-control" id="formName" matInput placeholder="Bar" type="text" formControlName="name">
+  </div>
+  <div class="mb-3">
+    <label for="formDescription" class="form-label">Description</label>
+    <input class="form-control" id="formDescription" matInput placeholder="Description" type="text" formControlName="description">
+  </div>
+  <div class="mb-3">
+    <label for="formPrice" class="form-label">Name</label>
+    <input class="form-control" id="formPrice" matInput placeholder="Price" type="text" formControlName="price">
+  </div>
+  <div class="mb-3">
+    <label for="formMonths" class="form-label">Months</label>
+    <input class="form-control" id="formMonths" matInput placeholder="Months" type="text" formControlName="months">
+  </div>
+  <button class="btn btn-primary float-end">Add</button>
+</form>

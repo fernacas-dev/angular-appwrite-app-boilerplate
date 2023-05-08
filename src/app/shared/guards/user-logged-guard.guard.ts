@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class UserLoggedGuardGuard implements CanActivate {
 
+
   constructor(private authService: AuthService){}
 
   canActivate(

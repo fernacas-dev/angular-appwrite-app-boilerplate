@@ -1,0 +1,31 @@
+<div [hidden]="!isCreatingInstance"  class="bg"></div>
+
+<!-- Modal -->
+<div [hidden]="!isCreatingInstance" class="modal fade show"
+  id="staticBackdrop"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+  style="display: block"
+>
+  <form [formGroup]="form" (ngSubmit)="save($event)">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Create WPInstance</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cancel()"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="formcontainerName" class="form-label">Container Name</label>
+            <input class="form-control" id="formcontainerName" matInput placeholder="wordpress" type="text" formControlName="containerName">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger float-end ms-2" (click)="cancel()">Cancel</button>
+          <button class="btn btn-primary float-end ms-2">Add</button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+ </div>

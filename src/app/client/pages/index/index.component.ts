@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component} from '@angular/core';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent {
+  isShowAddWPForm: boolean = false;
 
-  constructor() { }
+  showAddWPForm($event: boolean){
+    this.isShowAddWPForm = true;
+  }
 
-  ngOnInit(): void {
+  hideAddWPForm($event: boolean){
+    this.isShowAddWPForm = false;
   }
 
 }

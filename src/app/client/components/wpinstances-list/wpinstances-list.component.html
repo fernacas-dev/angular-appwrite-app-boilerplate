@@ -1,0 +1,23 @@
+<div class="row mt-4">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <div class="d-flex flex-row-reverse">
+      <button class="btn btn-primary ms-2" (click)="refresh()">Refresh</button>
+      <button class="btn btn-primary ms-2" (click)="showCreateForm()" >Crear WPInstance</button>
+
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
+<div class="row mb-4">
+  <div *ngIf="wpInstances === null" class="position-relative" style="padding-top: 17.5%; padding-bottom: 17.5%;">
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <app-loader ></app-loader>
+    </div>
+  </div>
+
+
+  <div *ngFor="let wpInstance of wpInstances"  class="col-4 d-flex justify-content-center mt-3 mb-3">
+    <app-wpinstances-items [wpInstance]="wpInstance"></app-wpinstances-items>
+  </div>
+</div>

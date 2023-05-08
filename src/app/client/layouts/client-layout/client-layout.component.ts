@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-client-layout',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientLayoutComponent implements OnInit {
 
-  constructor() { }
+  isAdmin: boolean = false;
+
+  constructor(private authService: AuthService) {
+    authService.isAdmin();
+
+   }
 
   ngOnInit(): void {
+    this.authService.isAdmin$.subscribe(isAdmin => {
+      console.log(`isAdmin ${isAdmin}`)
+      this.isAdmin = isAdmin;
+    })
   }
 
 }

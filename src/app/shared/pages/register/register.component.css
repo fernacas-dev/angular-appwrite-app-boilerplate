@@ -10,16 +10,17 @@ button {
   font-weight: 600;
 }
 
-.card {
+.register-card {
   width: 100%;
-  margin-top: 20%
+  margin-top: 20%;
+  margin-left: 0.35%;
 }
 
-.card-header {
-  border-bottom: 2px black solid;
+.register-card-header {
+ /*border-bottom: 2px black solid;*/
 }
 
-.card-title {
+.register-card-title {
   text-align: center;
   font-size: 24px;
   font-weight: 600;

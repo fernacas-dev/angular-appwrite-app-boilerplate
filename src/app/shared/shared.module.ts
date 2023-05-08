@@ -11,6 +11,7 @@ import { AddFormComponent } from './components/add-form/add-form.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CommonModule } from '@angular/common';
     CrudComponent,
     AddFormComponent,
     EditFormComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
   ],
   exports: [
+    LoaderComponent,
     LoginComponent,
     RegisterComponent,
     TableComponent,

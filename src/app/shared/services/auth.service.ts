@@ -15,6 +15,16 @@ export class AuthService {
  private _user = new BehaviorSubject<any | null>(
    null
  );
+ private _role = new BehaviorSubject<string>(
+  ""
+);
+ readonly role$ = this._role.asObservable();
+
+ private _isAdmin = new BehaviorSubject<boolean>(
+  false
+);
+ readonly isAdmin$ = this._isAdmin.asObservable();
+
  readonly user$ = this._user.asObservable();
 
  private _error = new BehaviorSubject<any | null>(
@@ -64,4 +74,24 @@ export class AuthService {
   }
   return false;
  }
+
+ async getRole() {
+  const roleReq = this.appwriteAPI.account.get()
+  return from(roleReq).subscribe(user => {
+     console.log(user.prefs['role']);
+     this._role.next(user.prefs['role'])
+  },error => {
+    this._error.next(error);
+  });
+}
+
+async isAdmin() {
+  const roleReq = this.appwriteAPI.account.get()
+  return from(roleReq).subscribe(user => {
+     this._isAdmin.next(user.prefs['role'] === "admin")
+  },error => {
+    this._error.next(error);
+  });
+}
+
 }

@@ -16,6 +16,11 @@ export class CrudService implements ICrudService{
   );
   readonly list$ = this._list.asObservable();
 
+  private _item = new BehaviorSubject<any | null>(
+    null
+  );
+  readonly item$ = this._item.asObservable();
+
   private _created = new BehaviorSubject<any | null>(
     null
   );
@@ -46,6 +51,15 @@ export class CrudService implements ICrudService{
   ).subscribe(data => {
       if(data.total > 0)
         this._list.next(data.documents)
+   });
+ }
+
+ getById(id: string) {
+  const resp = this.appwriteAPI.database.getDocument(this.dbId, this.tableId, id);
+  return from(resp).pipe(
+    filter( x => x !== null),
+  ).subscribe(data => {
+      this._item.next(data)
    });
  }
 
