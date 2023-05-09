@@ -10,7 +10,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class WpinstancesListComponent implements OnInit {
 
-  wpInstances: InstanceData[] | null = null;
+  wpInstances: InstanceData[] | null = [];
   listenEventsSubscription: any;
   @Output() isCreatingWPInstanceForm: EventEmitter<boolean> = new EventEmitter();
 
@@ -49,7 +49,7 @@ export class WpinstancesListComponent implements OnInit {
   }
 
   refresh(){
-    this.wpInstances = null;
+    this.wpInstances = [];
     this.instanceDataService.get();
   }
 
